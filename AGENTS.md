@@ -8,17 +8,18 @@ Read instructions in this order:
 2. One relevant file in `instructions/guides/`
 3. `instructions/project/index.md` when it exists for the repository
 4. Only the relevant files in `instructions/skills/` when `instructions/project/` routes to them
-5. Only the relevant files in `instructions/shared-domain/`
-6. Only the relevant files in `instructions/project/`
+5. Only the relevant files in `instructions/project/`
+6. Only the relevant files in `instructions/shared-domain/` when repository-local routing or the operator request indicates shared cross-repository domain context is needed
 7. Only the relevant files in `instructions/domain/` when reusable domain abstractions are needed
 8. The active task directory in `instructions/work/` only when needed for continuation, approved planning, or checkpoints
 
 ## Loading Rules
 - `instructions/core/session-contract.md` always applies.
 - Load one relevant guide from `instructions/guides/` based on the current phase of work.
+- During bootstrap before the operator provides a task, do not load any guide yet.
 - For hypothetical or future feature exploration, load `instructions/guides/feature-discovery.md`.
 - If the applicable guide set is unclear, ask the operator.
-- If the task touches a business domain shared across multiple repositories or services, load the relevant files from `instructions/shared-domain/` first.
+- If the task touches a business domain shared across multiple repositories or services, use repository-local routing and the operator request to confirm which shared-domain files are relevant before loading them.
 - When multiple guides apply, follow the guide that matches the current phase of work:
 - Discovery and analysis first.
 - Implementation only after the operator approves moving forward.

@@ -27,7 +27,6 @@ Follow `AGENTS.md` as the bootstrap router.
 
 Load only:
 - `instructions/core/session-contract.md`
-- the single most relevant file from `instructions/guides/`
 - `instructions/project/index.md` when it exists
 - only the touched files from `instructions/project/`
 - only the specific files from `instructions/skills/` that `instructions/project/` routes to
@@ -35,6 +34,7 @@ Load only:
 - the active task directory in `instructions/work/` only when continuing a task, planning approved implementation, or writing a checkpoint
 
 Keep all other instruction files cold until they are required by the task.
+Do not load any file from `instructions/guides/` until the operator provides the problem description and the current phase of work is known.
 If the relevant guide or touched area is unclear, ask before loading more.
 If the repository has no `instructions/project/` documentation yet, keep `instructions/project-template/` cold unless the operator asks for onboarding or documentation generation.
 ```

@@ -57,6 +57,8 @@ Do not treat naming guesses or unsupported domain assumptions as authoritative.
 ## Required Outputs
 - `instructions/project/index.md`
 - `instructions/project/skill-profile.md`
+- `instructions/project/personal-skill-policy.md` only when the repository needs documented optional personal-skill behavior
+- `instructions/project/recommended-third-party-skills.md` only when the repository chooses to maintain a public optional recommendation index
 - `instructions/project/repo-map.md`
 - `instructions/project/stack-and-commands.md`
 - `instructions/project/modules/<module>.md` when mixed architecture, module-specific overrides, or migration zones justify it
@@ -73,7 +75,10 @@ Use `instructions/project-template/` only as a reusable source for generating re
 - Keep project documentation technical and domain documentation business-oriented.
 - Include a lightweight routing file such as `instructions/project/index.md` that tells the agent which repository-local docs to load for common task types.
 - Include `instructions/project/skill-profile.md` so the repository can declare which reusable skills are active and when they should be attached.
+- When the repository supports optional personal third-party skills, document that behavior in a separate cold file such as `instructions/project/personal-skill-policy.md`.
+- When the repository wants to share optional third-party recommendations, use a separate informational file such as `instructions/project/recommended-third-party-skills.md`.
 - Use `instructions/project-template/index.md` and `instructions/project-template/skill-profile.md` as reusable starting patterns when generating those files for a new repository.
+- Use `instructions/project-template/personal-skill-policy.md` and `instructions/project-template/recommended-third-party-skills.md` when those optional project files are needed.
 - Use `instructions/project-template/module.md` as the reusable starting pattern when generating `instructions/project/modules/<module>.md`.
 - Use the other files in `instructions/project-template/` as the reusable starting patterns for the rest of the generated project documentation.
 - Keep the routing file short, path-first, and rebuildable from the rest of the project documentation.
@@ -101,6 +106,8 @@ Default minimum cut:
 
 Add only when evidence justifies it:
 
+- `instructions/project/personal-skill-policy.md`
+- `instructions/project/recommended-third-party-skills.md`
 - `instructions/project/modules/<module>.md`
 - `instructions/project/backend.md`
 - `instructions/project/frontend.md`
