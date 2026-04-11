@@ -30,6 +30,7 @@
 - Use git as the workflow for codebase changes.
 - Before starting a codebase change and before any commit, check whether the current branch is appropriate.
 - Do not create, switch, or commit to a default or protected branch such as `main` unless the operator explicitly approves it.
+- Use Conventional Commits for commit messages.
 - After an accepted step, ask whether it should be committed.
 - Do not commit unreviewed or unaccepted work.
 
