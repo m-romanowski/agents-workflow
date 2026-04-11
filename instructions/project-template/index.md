@@ -5,6 +5,7 @@
 - template for a repository-local router in `instructions/project/index.md`
 - defines how repo-specific docs route to reusable skills without making them hot by default
 - serves as a source pattern when `instructions/project/` does not exist yet and onboarding must generate `instructions/project/index.md`
+- may also route to repository-local workflow customization docs such as optional personal skill bridges and public recommendation indexes
 
 ## Template Rules
 
@@ -84,3 +85,14 @@ Then:
 - if the review touches React code, load `instructions/skills/react-js/index.md`
 - load `instructions/skills/react-js/review.md`
 - load deeper project docs only when local structure is known to differ
+
+### Workflow Customization Or Agent Setup
+
+Load:
+
+- `instructions/project/personal-skill-policy.md`
+
+Then:
+
+- load `instructions/project/recommended-third-party-skills.md` only when the operator asks about optional or recommended third-party skills
+- keep optional-skill recommendation docs cold during normal implementation, review, and investigation tasks unless explicitly requested

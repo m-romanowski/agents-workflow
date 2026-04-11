@@ -24,6 +24,7 @@ Read instructions in this order:
 - Implementation only after the operator approves moving forward.
 - Use `instructions/project/index.md` to decide which repository-local docs to load when that file exists.
 - Use `instructions/project/index.md` and `instructions/project/skill-profile.md` to decide whether any reusable skill files in `instructions/skills/` are relevant when those files exist.
+- Keep optional personal-skill policy docs under `instructions/project/` cold unless the task is about workflow customization, agent setup, or operator-requested personal skills.
 - If repository project docs do not exist yet and the operator asks for onboarding or documentation generation, use `instructions/core/project-overview-preparation.md` and `instructions/project-template/` as the source pattern.
 - Do not load `instructions/skills/` by default at session start.
 - Load only the specific skill files routed by project docs and required by the task.

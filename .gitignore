@@ -47,6 +47,7 @@ instructions/work/*
 !instructions/project/.gitkeep
 !instructions/project/index.md
 !instructions/project/skill-profile.md
+!instructions/project/personal-skill-policy.md
 !instructions/project/recommended-third-party-skills.md
 !instructions/work/.gitkeep
 !instructions/work/README.md

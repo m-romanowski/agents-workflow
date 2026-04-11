@@ -11,7 +11,7 @@
 
 Load:
 
-- `instructions/project/skill-profile.md`
+- `instructions/project/personal-skill-policy.md`
 
 Then:
 
@@ -21,10 +21,12 @@ Then:
 
 - do not load workflow-customization docs by default
 - load them only when the operator explicitly asks about optional skills, personal workflow extensions, or agent setup behavior
+- load `instructions/project/skill-profile.md` only when the task needs repository-local routing to reusable skills
 
 ## Canonical Project Files
 
 - `instructions/project/skill-profile.md`
+- `instructions/project/personal-skill-policy.md`
 - `instructions/project/recommended-third-party-skills.md`
 
 ## Notes
