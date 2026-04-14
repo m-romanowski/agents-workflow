@@ -71,7 +71,8 @@ For each scenario, define:
   - `instructions/core/session-contract.md`
   - relevant planning or discovery guide
   - project routing docs needed for the touched area
-  - `instructions/work/` after tracked planning starts
+  - the active task `TODO.md` front matter after tracked planning starts
+  - the active task `TODO.md` body only when plan details are needed
 - Expected forbidden actions:
   - do not edit the main codebase
   - do not run implementation validation
@@ -87,7 +88,8 @@ For each scenario, define:
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - relevant implementation guide
-  - active task files in `instructions/work/`
+  - the active task `TODO.md` front matter
+  - the active task `TODO.md` body only when step details are needed
   - only the project or skill docs needed for the touched area
 - Expected forbidden actions:
   - do not skip approved task records
@@ -138,7 +140,7 @@ For each scenario, define:
   - `instructions/project/index.md` when it exists
 - Expected forbidden actions:
   - do not load guides before task context exists
-  - do not inspect `instructions/work/` unless continuing tracked work
+  - do not inspect `instructions/work/` unless continuing tracked work in `/plan` or `/implement`
 - Expected response shape:
   - acknowledge minimal bootstrap
   - wait for the actual task

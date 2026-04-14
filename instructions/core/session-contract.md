@@ -58,6 +58,8 @@
 - For each task, create or update a dedicated directory under `instructions/work/` using `NNN-short-task-name/`.
 - Keep plans small, explicit, and reviewable.
 - Work from the approved `TODO.md`.
+- For tracked tasks, treat the `TODO.md` front matter as the canonical current-state record for routing and status checks.
+- Use the `TODO.md` body as the operator-readable plan and ordered step list, not as the primary source for inferring current state when front matter is present.
 - Execute one approved step at a time.
 - Update the task files before changing the main codebase if the plan or approach changes.
 - Do not create tracked planning artifacts during `/discuss` unless the operator explicitly switches to tracked work.
@@ -65,7 +67,17 @@
 ## Checkpoints
 - After each completed and accepted step, add a checkpoint file in the active task directory.
 - Keep checkpoints concise and resumable.
-- Before continuing a task, verify that `TODO.md` and the latest checkpoint still match the approved state.
+- Before continuing a task, read the `TODO.md` front matter first, then verify that the latest checkpoint still matches the approved state.
+
+## Tracked Task Routing
+- On tracked work, read the active task `TODO.md` front matter before reading any other file in the task directory.
+- Treat front matter as authoritative for the current task status, mode, current step, approved steps, latest checkpoint, approval requirements, and routing boundaries.
+- Do not infer current task state from prose in `README.md`, milestone files, or checkpoints when the front matter is present and complete.
+- Load `README.md` only for task context, rationale, or scope details.
+- Load milestone files only when milestone-level acceptance criteria or dependencies are needed.
+- Load checkpoints only for accepted-history review, task resumption verification, or drift investigation.
+- If front matter and markdown body disagree, front matter wins until the task record is explicitly updated.
+- If the front matter is missing, incomplete, or contradictory, stop and ask the operator or repair the task record before proceeding.
 
 ## Git
 - Use git as the workflow for codebase changes.

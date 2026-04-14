@@ -11,7 +11,7 @@ Read instructions in this order:
 5. Only the relevant files in `instructions/project/`
 6. Only the relevant files in `instructions/shared-domain/` when repository-local routing or the operator request indicates shared cross-repository domain context is needed
 7. Only the relevant files in `instructions/domain/` when reusable domain abstractions are needed
-8. The active task directory in `instructions/work/` only when needed for continuation, approved planning, or checkpoints
+8. The active task directory in `instructions/work/` only when needed for continuation, approved planning, or checkpoints; for tracked work, read the active task `TODO.md` front matter first and treat it as the canonical current-state source
 
 ## Mode Commands
 
@@ -61,6 +61,12 @@ Defaults when no explicit mode command is given:
 - Load only the domain files needed for the touched area when reusable domain abstractions are relevant.
 - The operator request itself is a valid source for deciding which project and domain files are relevant.
 - Load the active task directory only when continuing a task, planning approved implementation, or recording checkpoints.
+- For tracked work, read only the active task `TODO.md` front matter first to determine current status, mode, current step, approvals, and routing boundaries.
+- Do not scan `README.md`, milestone files, or checkpoints to infer current task state when the `TODO.md` front matter is present and complete.
+- Load the `TODO.md` body only when the ordered step list or operator-readable plan details are needed.
+- Load `README.md` only when task context, rationale, or scope explanation is needed.
+- Load the latest checkpoint only when resuming work, verifying accepted history, or investigating drift between the current task state and prior accepted outcomes.
+- If the `TODO.md` front matter is missing, incomplete, or contradictory, stop and ask the operator or repair the task record before proceeding.
 - Do not load or create `instructions/work/` artifacts during `/discuss` unless the operator explicitly switches to tracked work.
 - Do not treat `/no-track` as valid for `/plan` or `/implement`.
 - Keep documentation-policy files in `instructions/core/` cold unless the task involves documentation maintenance or accepted work requires updating repository or domain docs.
