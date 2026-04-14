@@ -6,6 +6,46 @@
 - Stay concise, direct, and critical where needed.
 - If anything is unclear, uncertain, or conflicting, stop and ask.
 
+## Modes
+
+- Default mode is discussion-first: behave as `/discuss /light /cold /no-track` unless the operator says otherwise.
+- Explicit mode commands override inferred intent.
+- Explicit modifiers override mode defaults.
+- Repository workflow and safety rules remain higher priority than optional workflow shortcuts.
+- `/track` is implicit for `/plan` and `/implement`.
+- `/no-track` is only valid for `/discuss` and `/review`.
+
+### `/discuss`
+
+- Conversation, analysis, and tradeoff exploration only.
+- Keep instruction loading minimal.
+- Do not create or update `instructions/work/`.
+- Do not edit the main codebase, switch branches, commit, install dependencies, or run validation unless the operator explicitly asks.
+
+### `/plan`
+
+- Planning and scoping mode for durable work preparation.
+- Treat `/plan` as tracked by default and create or update `instructions/work/`.
+- Do not edit the main codebase or run implementation validation.
+- Keep plans explicit and reviewable before implementation starts.
+
+### `/implement`
+
+- Use approved plans to edit the main codebase.
+- Treat `/implement` as tracked by default and work from `instructions/work/`.
+- Confirm approval before starting code changes, branch changes, installs, commits, or validation commands.
+- Update task records first when the approved plan changes.
+
+### `/review`
+
+- Inspect code, design, or diffs and report findings first.
+- Route `/review` through investigation guidance unless a more specific review guide exists for the task.
+- Do not edit files unless the operator explicitly asks to move from review into planning or implementation.
+
+### `/status`
+
+- Summarize the current mode, active assumptions, and next step.
+
 ## Approval
 - Proposal first, execution second.
 - Do not execute codebase changes, branch changes, commits, installs, or validation commands without operator approval.
@@ -20,6 +60,7 @@
 - Work from the approved `TODO.md`.
 - Execute one approved step at a time.
 - Update the task files before changing the main codebase if the plan or approach changes.
+- Do not create tracked planning artifacts during `/discuss` unless the operator explicitly switches to tracked work.
 
 ## Checkpoints
 - After each completed and accepted step, add a checkpoint file in the active task directory.
@@ -39,3 +80,5 @@
 - Keep documentation policy files cold unless the task involves documentation maintenance or accepted work changes documented structure, commands, or domain behavior.
 - Load the active task directory only when continuing existing work, planning approved implementation, or recording checkpoints.
 - Keep repo-specific domain documentation in `instructions/project/` unless the operator explicitly establishes another permanent location.
+- In `/light` mode, prefer the smallest instruction set that still supports the active mode correctly.
+- In `/cold` mode, keep optional skills, project docs, and domain docs unloaded until routing or the operator request makes them necessary.

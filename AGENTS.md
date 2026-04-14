@@ -13,10 +13,37 @@ Read instructions in this order:
 7. Only the relevant files in `instructions/domain/` when reusable domain abstractions are needed
 8. The active task directory in `instructions/work/` only when needed for continuation, approved planning, or checkpoints
 
+## Mode Commands
+
+Use these explicit commands to control workflow and instruction loading:
+
+- `/discuss`: conversation only; keep loading minimal and do not create task records
+- `/plan`: planning mode; tracked task records are required, but do not edit the main codebase
+- `/implement`: implementation mode; edit the main codebase only after explicit operator approval
+- `/review`: review-only mode; route to investigation guidance and report findings without editing unless the operator asks
+- `/status`: summarize the current mode, assumptions, and next expected step
+
+Optional modifiers:
+
+- `/light`: minimum viable instruction loading for the active mode
+- `/full`: load all docs clearly relevant to the active mode
+- `/cold`: keep optional docs and skills unloaded unless they become necessary
+- `/track`: require durable records under `instructions/work/`
+- `/no-track`: forbid durable records under `instructions/work/` for discussion or review work
+
+Defaults when no explicit mode command is given:
+
+- behave as `/discuss /light /cold /no-track`
+- do not infer tracked work from exploratory conversation alone
+- treat explicit mode commands as higher priority than inferred intent
+- treat `/plan` and `/implement` as tracked modes even when `/track` is omitted
+
 ## Loading Rules
 - `instructions/core/session-contract.md` always applies.
 - Load one relevant guide from `instructions/guides/` based on the current phase of work.
 - During bootstrap before the operator provides a task, do not load any guide yet.
+- For explicit discussion mode, prefer the smallest useful guide footprint and keep task records cold.
+- Route `/review` to `instructions/guides/investigation.md`.
 - For hypothetical or future feature exploration, load `instructions/guides/feature-discovery.md`.
 - If the applicable guide set is unclear, ask the operator.
 - If the task touches a business domain shared across multiple repositories or services, use repository-local routing and the operator request to confirm which shared-domain files are relevant before loading them.
@@ -34,6 +61,8 @@ Read instructions in this order:
 - Load only the domain files needed for the touched area when reusable domain abstractions are relevant.
 - The operator request itself is a valid source for deciding which project and domain files are relevant.
 - Load the active task directory only when continuing a task, planning approved implementation, or recording checkpoints.
+- Do not load or create `instructions/work/` artifacts during `/discuss` unless the operator explicitly switches to tracked work.
+- Do not treat `/no-track` as valid for `/plan` or `/implement`.
 - Keep documentation-policy files in `instructions/core/` cold unless the task involves documentation maintenance or accepted work requires updating repository or domain docs.
 
 ## Directory Map
@@ -60,6 +89,11 @@ Read instructions in this order:
 - If a proposed rule does not make sense in a different repository, it probably does not belong in the shared template layer.
 - Treat `instructions/domain/` as the abstraction layer for reusable domain templates or cross-project domain structures, not as the default home for repo-specific domain notes.
 - Keep repository-specific domain documentation in `instructions/project/` unless the operator explicitly introduces a different permanent location.
+
+## Path Style
+- In repository documentation, prefer repo-relative paths and relative markdown links.
+- Do not write absolute local filesystem paths such as `/Users/...` into repository files unless the operator explicitly asks for environment-specific documentation.
+- Keep examples portable across machines and clones.
 
 ## Priority
 - Operator instructions override everything else.

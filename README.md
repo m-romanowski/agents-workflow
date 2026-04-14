@@ -65,6 +65,26 @@ architecture. I'll continue to develop them (primarily back-end - Java and Sprin
 - Keep repository-specific facts out of the shared template layer.
 - Let real work drive skill growth instead of prebuilding everything.
 
+## Workflow Modes
+
+Use explicit commands when you want deterministic routing and lower token usage:
+
+- `/discuss`: default conversation mode; minimal loading, no task records
+- `/plan`: tracked planning mode; create or update `instructions/work/`, no code edits
+- `/implement`: tracked execution mode after approval
+- `/review`: review mode routed through investigation guidance
+- `/status`: summarize current mode, assumptions, and next step
+
+Useful modifiers:
+
+- `/light`: minimum viable instruction loading
+- `/full`: load all clearly relevant docs for the active mode
+- `/cold`: keep optional docs and skills unloaded unless needed
+- `/track`: require `instructions/work/`
+- `/no-track`: valid for discussion or review work only
+
+If no mode command is given, the default is `/discuss /light /cold /no-track`.
+
 ## How To Extend It
 
 Add a new skill when a reusable technical pattern appears across repositories.
@@ -101,10 +121,13 @@ When adding a new backend or frontend stack family:
 - Keep bootstrap files, routing files, and skill entry points short, path-first, and easy to rebuild from deeper docs.
 - Put detailed examples, edge cases, and optional guidance in cold child files instead of hot-loaded routers.
 - Load only one relevant guide for the current phase of work unless the active task clearly requires another.
+- Prefer explicit mode commands over intent inference when you want deterministic loading behavior.
 - Prefer module docs and project-local routing over broad repository-wide skill loading in mixed-architecture codebases.
 - Expand reusable skills and templates through accepted tasks, not speculative completeness.
 
 Detailed rules live in the instruction files themselves. This README is only the high-level map.
+
+For workflow calibration examples, see [instructions/core/workflow-mode-matrix.md](instructions/core/workflow-mode-matrix.md).
 
 If you think it would be worthwhile to develop skills related to domain design in business applications, I encourage
 you to submit suggestions for changes and improvements. I try to keep an open mind toward all feedback.

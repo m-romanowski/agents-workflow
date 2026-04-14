@@ -7,6 +7,7 @@ Use this guide for hypothetical or future features that do not yet exist in the 
 - Help identify the best-fit solution within the current application architecture and constraints.
 - Do not assume the operator is a novice. Stay concise and direct unless the operator asks for more explanation.
 - Ask explicitly for missing business requirements, domain knowledge, constraints, prior decisions, or documentation when that context would materially affect the recommendation.
+- Separate informal discussion from tracked discovery unless the operator explicitly asks to record the work.
 
 ## Goals
 - Understand the feature goal and business context.
@@ -26,6 +27,24 @@ Use this guide for hypothetical or future features that do not yet exist in the 
 - open questions for the operator
 - possible next milestones if implementation is later approved
 
+## Discovery Modes
+
+### Informal discovery
+
+Use this when the operator wants to think through options without creating durable workflow artifacts.
+
+- Default to `/discuss /light /cold /no-track`
+- Keep outputs conversational and decision-oriented
+- Do not create `instructions/work/`
+
+### Tracked discovery
+
+Use this when the operator wants durable planning artifacts for later implementation.
+
+- Switch to `/plan /track`
+- Create or update the active task directory in `instructions/work/`
+- Record assumptions, options, and decisions in a reviewable form
+
 ## Recommendation Format
 - recommended option
 - why this option fits the current architecture
@@ -35,6 +54,7 @@ Use this guide for hypothetical or future features that do not yet exist in the 
 - next milestone if the operator wants to continue
 
 ## Task Structure
+- Use this structure for tracked discovery only.
 - Create or update the active task directory in `instructions/work/`.
 - Use `README.md` for the feature summary, goals, assumptions, options, and recommendation.
 - Use `TODO.md` for discovery and decision steps until implementation is approved.

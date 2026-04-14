@@ -12,6 +12,7 @@ Use this short opener at the beginning of a fresh session before providing the a
 Follow `BOOTSTRAP.md` as the session bootstrap.
 Initialize only the minimal instruction context.
 Do not assume a task yet.
+Default to `/discuss /light /cold /no-track` until the operator says otherwise.
 Wait for the operator's problem description before loading additional guides, project/domain files, or task files.
 ```
 
@@ -35,6 +36,7 @@ Load only:
 
 Keep all other instruction files cold until they are required by the task.
 Do not load any file from `instructions/guides/` until the operator provides the problem description and the current phase of work is known.
+Use explicit mode commands from `AGENTS.md` when the operator provides them.
 If the relevant guide or touched area is unclear, ask before loading more.
 If the repository has no `instructions/project/` documentation yet, keep `instructions/project-template/` cold unless the operator asks for onboarding or documentation generation.
 ```
@@ -43,6 +45,7 @@ If the repository has no `instructions/project/` documentation yet, keep `instru
 - This prompt is intended for analysis-first session startup.
 - The session-start opener above can be injected first, with the minimal load policy treated as the behavior it should follow.
 - For implementation work, continue following the approval and planning flow defined in `instructions/core/session-contract.md`.
+- If the operator starts with no explicit mode command, stay in the default discussion-first mode until they switch modes.
 - Expected initial load after the opener:
   - `AGENTS.md`
   - `instructions/core/session-contract.md`
