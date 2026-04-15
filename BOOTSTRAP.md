@@ -12,7 +12,7 @@ Use this short opener at the beginning of a fresh session before providing the a
 Follow `BOOTSTRAP.md` as the session bootstrap.
 Initialize only the minimal instruction context.
 Do not assume a task yet.
-Default to `/discuss /light /cold /no-track` until the operator says otherwise.
+Default to `wf:discuss wf:light wf:cold wf:no-track` until the operator says otherwise.
 Wait for the operator's problem description before loading additional guides, project/domain files, or task files.
 ```
 
@@ -37,6 +37,7 @@ Load only:
 Keep all other instruction files cold until they are required by the task.
 Do not load any file from `instructions/guides/` until the operator provides the problem description and the current phase of work is known.
 Use explicit mode commands from `AGENTS.md` when the operator provides them.
+Full `wf:` forms are canonical. Optional aliases may be used as shorthand after the session starts.
 If the relevant guide or touched area is unclear, ask before loading more.
 If the repository has no `instructions/project/` documentation yet, keep `instructions/project-template/` cold unless the operator asks for onboarding or documentation generation.
 ```

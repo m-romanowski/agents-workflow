@@ -15,35 +15,52 @@ Read instructions in this order:
 
 ## Mode Commands
 
-Use these explicit commands to control workflow and instruction loading:
+Use these explicit commands to control workflow and instruction loading.
+Use the `wf:` prefix to avoid collisions with predefined Codex slash commands such as `/status`.
 
-- `/discuss`: conversation only; keep loading minimal and do not create task records
-- `/plan`: planning mode; tracked task records are required, but do not edit the main codebase
-- `/implement`: implementation mode; edit the main codebase only after explicit operator approval
-- `/review`: review-only mode; route to investigation guidance and report findings without editing unless the operator asks
-- `/status`: summarize the current mode, assumptions, and next expected step
+- `wf:discuss`: conversation only; keep loading minimal and do not create task records
+- `wf:plan`: planning mode; tracked task records are required, but do not edit the main codebase
+- `wf:implement`: implementation mode; edit the main codebase only after explicit operator approval
+- `wf:review`: review-only mode; route to investigation guidance and report findings without editing unless the operator asks
+- `wf:status`: summarize the current mode, assumptions, and next expected step
 
 Optional modifiers:
 
-- `/light`: minimum viable instruction loading for the active mode
-- `/full`: load all docs clearly relevant to the active mode
-- `/cold`: keep optional docs and skills unloaded unless they become necessary
-- `/track`: require durable records under `instructions/work/`
-- `/no-track`: forbid durable records under `instructions/work/` for discussion or review work
+- `wf:light`: minimum viable instruction loading for the active mode
+- `wf:full`: load all docs clearly relevant to the active mode
+- `wf:cold`: keep optional docs and skills unloaded unless they become necessary
+- `wf:track`: require durable records under `instructions/work/`
+- `wf:no-track`: forbid durable records under `instructions/work/` for discussion or review work
+
+Optional aliases:
+
+- `wf:d` -> `wf:discuss`
+- `wf:p` -> `wf:plan`
+- `wf:i` -> `wf:implement`
+- `wf:r` -> `wf:review`
+- `wf:s` -> `wf:status`
+- `wf:l` -> `wf:light`
+- `wf:f` -> `wf:full`
+- `wf:c` -> `wf:cold`
+- `wf:t` -> `wf:track`
+- `wf:nt` -> `wf:no-track`
+
+Use the full `wf:` forms as the canonical syntax in documentation and defaults.
+Aliases are optional operator shorthand and may be mixed with full forms, such as `wf:p wf:t`.
 
 Defaults when no explicit mode command is given:
 
-- behave as `/discuss /light /cold /no-track`
+- behave as `wf:discuss wf:light wf:cold wf:no-track`
 - do not infer tracked work from exploratory conversation alone
 - treat explicit mode commands as higher priority than inferred intent
-- treat `/plan` and `/implement` as tracked modes even when `/track` is omitted
+- treat `wf:plan` and `wf:implement` as tracked modes even when `wf:track` is omitted
 
 ## Loading Rules
 - `instructions/core/session-contract.md` always applies.
 - Load one relevant guide from `instructions/guides/` based on the current phase of work.
 - During bootstrap before the operator provides a task, do not load any guide yet.
 - For explicit discussion mode, prefer the smallest useful guide footprint and keep task records cold.
-- Route `/review` to `instructions/guides/investigation.md`.
+- Route `wf:review` to `instructions/guides/investigation.md`.
 - For hypothetical or future feature exploration, load `instructions/guides/feature-discovery.md`.
 - If the applicable guide set is unclear, ask the operator.
 - If the task touches a business domain shared across multiple repositories or services, use repository-local routing and the operator request to confirm which shared-domain files are relevant before loading them.
@@ -67,8 +84,8 @@ Defaults when no explicit mode command is given:
 - Load `README.md` only when task context, rationale, or scope explanation is needed.
 - Load the latest checkpoint only when resuming work, verifying accepted history, or investigating drift between the current task state and prior accepted outcomes.
 - If the `TODO.md` front matter is missing, incomplete, or contradictory, stop and ask the operator or repair the task record before proceeding.
-- Do not load or create `instructions/work/` artifacts during `/discuss` unless the operator explicitly switches to tracked work.
-- Do not treat `/no-track` as valid for `/plan` or `/implement`.
+- Do not load or create `instructions/work/` artifacts during `wf:discuss` unless the operator explicitly switches to tracked work.
+- Do not treat `wf:no-track` as valid for `wf:plan` or `wf:implement`.
 - Keep documentation-policy files in `instructions/core/` cold unless the task involves documentation maintenance or accepted work requires updating repository or domain docs.
 
 ## Directory Map

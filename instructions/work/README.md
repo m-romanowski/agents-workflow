@@ -87,7 +87,7 @@ last_updated: 2026-04-14
 Routing rules:
 - Read the `TODO.md` front matter first when continuing or resuming tracked work.
 - Treat front matter as the canonical current-state source.
-- Use front-matter routing only for tracked work in `/plan` or `/implement`; do not load task routing state during `/discuss /no-track` or `/review /no-track`.
+- Use front-matter routing only for tracked work in `wf:plan` or `wf:implement`; do not load task routing state during `wf:discuss wf:no-track` or `wf:review wf:no-track`.
 - Do not scan `README.md`, milestone files, or checkpoints to infer current state when the front matter is present and complete.
 - Read the `TODO.md` body for plan details and ordered steps after the front matter establishes the current state.
 - Read `README.md` only when additional context, rationale, or scope explanation is needed.

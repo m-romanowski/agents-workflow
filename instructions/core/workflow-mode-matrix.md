@@ -19,7 +19,7 @@ For each scenario, define:
 ### 1. Default discussion
 
 - Operator input: `Should we split project docs by bounded context?`
-- Expected mode: `/discuss /light /cold /no-track`
+- Expected mode: `wf:discuss wf:light wf:cold wf:no-track`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - minimum routing docs only if needed
@@ -34,8 +34,8 @@ For each scenario, define:
 
 ### 2. Explicit discussion
 
-- Operator input: `/discuss should we move domain docs under project/ or shared-domain/`
-- Expected mode: `/discuss`
+- Operator input: `wf:discuss should we move domain docs under project/ or shared-domain/`
+- Expected mode: `wf:discuss`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - one minimal discussion-relevant guide only if needed
@@ -49,8 +49,8 @@ For each scenario, define:
 
 ### 3. Review mode
 
-- Operator input: `/review check whether this instruction stack has contradictions`
-- Expected mode: `/review`
+- Operator input: `wf:review check whether this instruction stack has contradictions`
+- Expected mode: `wf:review`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - `instructions/guides/investigation.md`
@@ -65,8 +65,8 @@ For each scenario, define:
 
 ### 4. Planned tracked work
 
-- Operator input: `/plan add a reusable Java backend skill router`
-- Expected mode: `/plan /track`
+- Operator input: `wf:p wf:t add a reusable Java backend skill router`
+- Expected mode: `wf:plan wf:track`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - relevant planning or discovery guide
@@ -83,8 +83,8 @@ For each scenario, define:
 
 ### 5. Approved implementation
 
-- Operator input: `/implement approved step 1 for the active task`
-- Expected mode: `/implement /track`
+- Operator input: `wf:implement approved step 1 for the active task`
+- Expected mode: `wf:implement wf:track`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - relevant implementation guide
@@ -101,8 +101,8 @@ For each scenario, define:
 
 ### 6. Feature exploration without tracking
 
-- Operator input: `/discuss what is the best way to route stack-specific skills in a mixed monorepo?`
-- Expected mode: `/discuss /light /cold /no-track`
+- Operator input: `wf:discuss what is the best way to route stack-specific skills in a mixed monorepo?`
+- Expected mode: `wf:discuss wf:light wf:cold wf:no-track`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - `instructions/guides/feature-discovery.md` only if option-shaping is needed
@@ -116,8 +116,8 @@ For each scenario, define:
 
 ### 7. Investigation with optional discovery
 
-- Operator input: `/review inspect whether the current onboarding flow causes unnecessary hot-loading`
-- Expected mode: `/review`
+- Operator input: `wf:review inspect whether the current onboarding flow causes unnecessary hot-loading`
+- Expected mode: `wf:review`
 - Expected docs loaded:
   - `instructions/core/session-contract.md`
   - `instructions/guides/investigation.md`
@@ -133,14 +133,14 @@ For each scenario, define:
 ### 8. Bootstrap-only session start
 
 - Operator input: `Follow BOOTSTRAP.md as the session bootstrap.`
-- Expected mode: implicit `/discuss /light /cold /no-track`
+- Expected mode: implicit `wf:discuss wf:light wf:cold wf:no-track`
 - Expected docs loaded:
   - `AGENTS.md`
   - `instructions/core/session-contract.md`
   - `instructions/project/index.md` when it exists
 - Expected forbidden actions:
   - do not load guides before task context exists
-  - do not inspect `instructions/work/` unless continuing tracked work in `/plan` or `/implement`
+  - do not inspect `instructions/work/` unless continuing tracked work in `wf:plan` or `wf:implement`
 - Expected response shape:
   - acknowledge minimal bootstrap
   - wait for the actual task

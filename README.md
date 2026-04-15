@@ -67,23 +67,39 @@ architecture. I'll continue to develop them (primarily back-end - Java and Sprin
 
 ## Workflow Modes
 
-Use explicit commands when you want deterministic routing and lower token usage:
+Use explicit commands when you want deterministic routing and lower token usage.
+Use the `wf:` prefix to keep repository workflow commands distinct from built-in slash commands.
 
-- `/discuss`: default conversation mode; minimal loading, no task records
-- `/plan`: tracked planning mode; create or update `instructions/work/`, no code edits
-- `/implement`: tracked execution mode after approval
-- `/review`: review mode routed through investigation guidance
-- `/status`: summarize current mode, assumptions, and next step
+- `wf:discuss`: default conversation mode; minimal loading, no task records
+- `wf:plan`: tracked planning mode; create or update `instructions/work/`, no code edits
+- `wf:implement`: tracked execution mode after approval
+- `wf:review`: review mode routed through investigation guidance
+- `wf:status`: summarize current mode, assumptions, and next step
 
 Useful modifiers:
 
-- `/light`: minimum viable instruction loading
-- `/full`: load all clearly relevant docs for the active mode
-- `/cold`: keep optional docs and skills unloaded unless needed
-- `/track`: require `instructions/work/`
-- `/no-track`: valid for discussion or review work only
+- `wf:light`: minimum viable instruction loading
+- `wf:full`: load all clearly relevant docs for the active mode
+- `wf:cold`: keep optional docs and skills unloaded unless needed
+- `wf:track`: require `instructions/work/`
+- `wf:no-track`: valid for discussion or review work only
 
-If no mode command is given, the default is `/discuss /light /cold /no-track`.
+Optional aliases:
+
+- `wf:d` -> `wf:discuss`
+- `wf:p` -> `wf:plan`
+- `wf:i` -> `wf:implement`
+- `wf:r` -> `wf:review`
+- `wf:s` -> `wf:status`
+- `wf:l` -> `wf:light`
+- `wf:f` -> `wf:full`
+- `wf:c` -> `wf:cold`
+- `wf:t` -> `wf:track`
+- `wf:nt` -> `wf:no-track`
+
+Full `wf:` forms remain canonical in docs and defaults. Aliases are optional shorthand and may be mixed with full forms.
+
+If no mode command is given, the default is `wf:discuss wf:light wf:cold wf:no-track`.
 
 ## How To Extend It
 

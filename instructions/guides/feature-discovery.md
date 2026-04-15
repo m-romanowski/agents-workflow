@@ -33,7 +33,7 @@ Use this guide for hypothetical or future features that do not yet exist in the 
 
 Use this when the operator wants to think through options without creating durable workflow artifacts.
 
-- Default to `/discuss /light /cold /no-track`
+- Default to `wf:discuss wf:light wf:cold wf:no-track`
 - Keep outputs conversational and decision-oriented
 - Do not create `instructions/work/`
 
@@ -41,7 +41,7 @@ Use this when the operator wants to think through options without creating durab
 
 Use this when the operator wants durable planning artifacts for later implementation.
 
-- Switch to `/plan /track`
+- Switch to `wf:plan wf:track`
 - Create or update the active task directory in `instructions/work/`
 - Record assumptions, options, and decisions in a reviewable form
 
