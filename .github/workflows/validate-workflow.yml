@@ -1,0 +1,24 @@
+name: Validate Workflow
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run workflow validator
+        run: python3 hooks/validate_workflow.py
+
+      - name: Run commit scope validator
+        run: python3 hooks/check_commit_scope.py

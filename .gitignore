@@ -38,6 +38,8 @@ out/
 
 ### Other ###
 .DS_Store
+__pycache__/
+*.py[cod]
 .examples/*
 instructions/project/*
 instructions/work/*

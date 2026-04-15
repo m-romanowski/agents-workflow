@@ -145,6 +145,41 @@ Detailed rules live in the instruction files themselves. This README is only the
 
 For workflow calibration examples, see [instructions/core/workflow-mode-matrix.md](instructions/core/workflow-mode-matrix.md).
 
+## Validation
+
+Run the workflow validator from the repository root:
+
+```bash
+python3 hooks/validate_workflow.py
+```
+
+The validator checks required workflow files, tracked task `TODO.md` front matter, core task-state consistency, and a small curated set of critical internal links.
+
+It exits with status `1` when any error is found and `0` when the workflow tree is clean.
+
+To enforce this locally before every commit, use the tracked pre-commit hook:
+
+```bash
+git config core.hooksPath .githooks
+chmod +x .githooks/pre-commit
+chmod +x .githooks/commit-msg
+```
+
+After that, every `git commit` will:
+- run `python3 hooks/validate_workflow.py`
+- verify there is exactly one active tracked task
+- require that active task to be in `implement` mode with a non-null `current_step`
+- block staged files outside the active task's `allowed_paths`
+- require a staged `checkpoint-*.md` file in the active task when the commit includes files outside that task directory
+
+The same tracked hook directory also provides a `commit-msg` gate that enforces Conventional Commits on the first commit-message line.
+
+Example:
+
+```text
+feat(workflow): add validator pre-commit hook
+```
+
 If you think it would be worthwhile to develop skills related to domain design in business applications, I encourage
 you to submit suggestions for changes and improvements. I try to keep an open mind toward all feedback.
 

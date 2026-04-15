@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+cd "$repo_root"
+
+echo "Running workflow validator..."
+python3 hooks/validate_workflow.py
+
+echo "Checking active task scope..."
+python3 hooks/check_commit_scope.py
