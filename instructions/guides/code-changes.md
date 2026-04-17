@@ -11,7 +11,8 @@ Use this guide for normal code edits, including features, bug fixes, refactors, 
 6. If feedback changes the work, update the task files first.
 7. After acceptance, write a checkpoint file.
 8. Ask whether the accepted step should be committed.
-9. Continue only after operator approval.
+9. When the task is complete, commit the accepted task before starting the next tracked task unless the operator explicitly says otherwise.
+10. Continue only after operator approval.
 
 ## Guide Selection
 - Load any additional guides that are clearly relevant to the current task.

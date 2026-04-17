@@ -99,6 +99,7 @@ Supported aliases:
 - Do not create, switch, or commit to a default or protected branch such as `main` unless the operator explicitly approves it.
 - Use Conventional Commits for commit messages.
 - After an accepted step, ask whether it should be committed.
+- A completed tracked task should be committed before starting the next tracked task unless the operator explicitly chooses not to commit it yet.
 - Do not commit unreviewed or unaccepted work.
 
 ## Documentation Routing
